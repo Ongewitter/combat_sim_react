@@ -12,7 +12,7 @@ const StyledButton = styled.button`
 
 function Button(props) {
   return(
-    <StyledButton>
+    <StyledButton onClick={() => props.onClick()}>
       {props.children}
     </StyledButton>
   )
