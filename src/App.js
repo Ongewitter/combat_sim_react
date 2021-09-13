@@ -2,18 +2,19 @@ import React from "react";
 import styled from 'styled-components';
 
 import logo from './logo.svg';
-import CharacterCreate from './character/create';
+import CharacterCreate from './character/Create';
 import Button from './components/Button';
+import RightPanel from "./components/RightPanel";
 
 function App() {
-  const [data, setData] = React.useState(null);
+  // const [data, setData] = React.useState(null);
   const [creating, setCreating] = React.useState(false);
 
-  React.useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`)
-      .then((res) => res.json())
-      .then((data) => setData(data.fun));
-  }, []);
+  // React.useEffect(() => {
+  //   fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`)
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.fun));
+  // }, []);
   
   function handleCreateCharacter() {
     setCreating(!creating);
@@ -23,14 +24,20 @@ function App() {
     <AppWrapper>
       <AppHeader>
         <AppLogo src={logo} alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
+        <p>"Loading..."</p>
+        {/* <p>{!data ? "Loading..." : data}</p> */}
       </AppHeader>
       <div>
         <Button onClick={() => handleCreateCharacter()}>
           Create a character
         </Button>
         The user is <b>{creating ? 'creating' : 'not creating'}</b> a character.
-        {creating ? <CharacterCreate/> : ''}
+        {creating ?
+          <RightPanel>
+            <CharacterCreate />
+          </RightPanel>
+          : ''
+        }
       </div>
     </AppWrapper>
   );
