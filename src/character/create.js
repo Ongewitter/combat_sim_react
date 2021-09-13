@@ -1,11 +1,12 @@
 import React from "react";
+import styled from 'styled-components';
 
 function Create() {
   return (
-    <div>
-      <header>
+    <CreateWrapper>
+      <CreateHeader>
         Add a new character
-      </header>
+      </CreateHeader>
       <form>
         <label>
           Name:
@@ -34,8 +35,17 @@ function Create() {
         </label>
         <input type="submit" value="Add character" />
       </form>
-    </div>
+    </CreateWrapper>
   );
 }
 
 export default Create;
+
+const CreateWrapper = styled.div`
+  text-align: center;
+`;
+
+const CreateHeader = styled.header`
+  background-color: #282c34;
+  color: white;
+`;
