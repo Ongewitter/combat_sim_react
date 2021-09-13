@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const S = {};
+S.Button = styled.button`
   text-align: center;
   color: palevioletred;
   font-size: 1em;
@@ -12,9 +13,9 @@ const StyledButton = styled.button`
 
 function Button(props) {
   return(
-    <StyledButton onClick={() => props.onClick()}>
+    <S.Button onClick={() => props.onClick()}>
       {props.children}
-    </StyledButton>
+    </S.Button>
   )
 }
 

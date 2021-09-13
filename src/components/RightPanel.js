@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 function RightPanel(props) {
   return (
-    <RightPanelDiv>
+    <S.RightPanelDiv>
       {props.children}
-    </RightPanelDiv>
+    </S.RightPanelDiv>
   );
 }
 
 export default RightPanel;
 
-const RightPanelDiv = styled.div`
+const S = {};
+S.RightPanelDiv = styled.div`
   background-color: white;
   border: solid 2px black;
   border-radius: 2px;
