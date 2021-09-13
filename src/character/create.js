@@ -1,6 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 
+import InputWithLabel from '../components/InputWithLabel';
+import TextInput from '../components/TextInput';
+
 function Create() {
   return (
     <CreateWrapper>
@@ -8,31 +11,35 @@ function Create() {
         Add a new character
       </CreateHeader>
       <form>
-        <label>
+        <InputWithLabel>
+          Name:
+          <TextInput name="name"/>
+        </InputWithLabel>
+        <InputWithLabel>
           Name:
           <input type="text" name="name" />
-        </label>
-        <label>
+        </InputWithLabel>
+        <InputWithLabel>
           HP:
           <input type="number" name="hp" />
-        </label>
+        </InputWithLabel>
         {/* TODO Should toggle depending on ruleset */}
-        <label>
+        <InputWithLabel>
           Armor:
           <input type="number" name="armor" />
-        </label>
-        <label>
+        </InputWithLabel>
+        <InputWithLabel>
           toHit:
           <input type="number" name="toHit" />
-        </label>
-        <label>
+        </InputWithLabel>
+        <InputWithLabel>
           Main attack damage die:
           <input type="number" name="damage_amount" /> d <input type="number" name="damage_die" />
-        </label>
-        <label>
+        </InputWithLabel>
+        <InputWithLabel>
           Once-per-turn bonus damage:
           <input type="number" name="damage_amount" /> d <input type="number" name="damage_die" />
-        </label>
+        </InputWithLabel>
         <input type="submit" value="Add character" />
       </form>
     </CreateWrapper>
@@ -46,6 +53,5 @@ const CreateWrapper = styled.div`
 `;
 
 const CreateHeader = styled.header`
-  background-color: #282c34;
-  color: white;
+  font-size: 1.5em;
 `;
