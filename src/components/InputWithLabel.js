@@ -1,15 +1,17 @@
 import React from "react";
 import styled from 'styled-components';
 
-function Input(props) {
+function InputWithLabel(props) {
   return (
-    <S.Input>
+    <S.Label>
       {props.children}
-    </S.Input>
+    </S.Label>
   );
 }
 
-export default Input;
+export default InputWithLabel;
 
 const S = {};
-S.Input = styled.input``;
+S.Label = styled.label`
+  display: block;
+`;
