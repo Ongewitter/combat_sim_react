@@ -2,7 +2,9 @@ import React from "react";
 import styled from 'styled-components';
 
 import InputWithLabel from '../components/InputWithLabel';
+import NumberInput from "../components/NumberInput";
 import TextInput from '../components/TextInput';
+import DiceInput from "../components/DiceInput";
 
 function Create() {
   return (
@@ -16,29 +18,25 @@ function Create() {
           <TextInput name="name"/>
         </InputWithLabel>
         <InputWithLabel>
-          Name:
-          <input type="text" name="name" />
-        </InputWithLabel>
-        <InputWithLabel>
           HP:
-          <input type="number" name="hp" />
+          <NumberInput name="hp" />
         </InputWithLabel>
         {/* TODO Should toggle depending on ruleset */}
         <InputWithLabel>
           Armor:
-          <input type="number" name="armor" />
+          <NumberInput name="armor" />
         </InputWithLabel>
         <InputWithLabel>
           toHit:
-          <input type="number" name="toHit" />
+          <NumberInput name="toHit" />
         </InputWithLabel>
         <InputWithLabel>
           Main attack damage die:
-          <input type="number" name="damage_amount" /> d <input type="number" name="damage_die" />
+          <DiceInput name="damage" />
         </InputWithLabel>
         <InputWithLabel>
           Once-per-turn bonus damage:
-          <input type="number" name="damage_amount" /> d <input type="number" name="damage_die" />
+          <DiceInput name="bonus_damage" />
         </InputWithLabel>
         <input type="submit" value="Add character" />
       </form>
