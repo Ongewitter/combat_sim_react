@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 function TextInput(props) {
   return (
-    <S.Input type="text" name={props.name} />
+    <S.Input type="text" name={props.name} onChange={props.onChange} />
   );
 }
 

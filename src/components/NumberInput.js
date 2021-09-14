@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 function NumberInput(props) {
   return (
-    <S.Input type="number" name={props.name} />
+    <S.Input type="number" name={props.name} onChange={props.onChange} />
   );
 }
 
