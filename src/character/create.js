@@ -27,7 +27,7 @@ function Create() {
       damage: damage,
       bonusDamage: bonusDamage
     }
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/characters`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
