@@ -7,7 +7,8 @@ import NumberInput from "../components/NumberInput";
 import TextInput from '../components/TextInput';
 import DiceInput from "../components/DiceInput";
 
-function Create() {
+function Create({ onSubmit }) {
+  const [ruleset, setRuleset] = React.useState('DnD');
   const [name, setName] = React.useState('');
   const [hp, setHp] = React.useState(1);
   const [armor, setArmor] = React.useState(10);
@@ -25,7 +26,8 @@ function Create() {
       armor: armor,
       toHit: toHit,
       damage: damage,
-      bonusDamage: bonusDamage
+      bonusDamage: bonusDamage,
+      ruleset: ruleset,
     }
     fetch(`${process.env.REACT_APP_BACKEND_URL}/characters`, {
       method: 'POST',
@@ -35,8 +37,8 @@ function Create() {
       body: JSON.stringify(character),
     })
       .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
+      .then(character => {
+        onSubmit(character);
       })
       .catch((error) => {
         console.error('Error:', error);
