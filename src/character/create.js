@@ -2,10 +2,12 @@ import React from "react";
 import styled from 'styled-components';
 
 import Button from '../components/Button';
-import InputWithLabel from '../components/InputWithLabel';
+import InputLabel from '../components/InputLabel';
 import NumberInput from "../components/NumberInput";
 import TextInput from '../components/TextInput';
 import DiceInput from "../components/DiceInput";
+import RadioButtonInput from "../components/RadioButtonInput";
+import RadioButtonList from "../components/RadioButtonList";
 
 function Create({ onSubmit }) {
   const [ruleset, setRuleset] = React.useState('DnD');
@@ -51,31 +53,52 @@ function Create({ onSubmit }) {
         Add a new character
       </CreateHeader>
       <form onSubmit={handleSubmit}>
-        <InputWithLabel>
+        <RadioButtonList>
+          <InputLabel
+            name="ruleset"
+            onChange={(e) => setRuleset(e.target.value)}>
+            DnD
+            <RadioButtonInput
+              id="radio-DnD"
+              name="ruleset"
+              value="DnD"
+              checked="checked"
+              onChange={(e) => setRuleset(e.target.value)} />
+          </InputLabel>
+          <InputLabel name="ruleset" onChange={(e) => setRuleset(e.target.value)}>
+            Let's pretend this is a different ruleset (it's not)
+            <RadioButtonInput
+              id="other-ruleset"
+              name="ruleset"
+              value="DnD"
+              onChange={(e) => setRuleset(e.target.value)} />
+          </InputLabel>
+        </RadioButtonList>
+        <InputLabel>
           Name:
           <TextInput name="name" onChange={(e) => setName(e.target.value)}/>
-        </InputWithLabel>
-        <InputWithLabel>
+        </InputLabel>
+        <InputLabel>
           HP:
           <NumberInput name="hp" onChange={(e) => setHp(e.target.value)}/>
-        </InputWithLabel>
+        </InputLabel>
         {/* TODO Should toggle depending on ruleset */}
-        <InputWithLabel>
+        <InputLabel>
           Armor:
           <NumberInput name="armor" onChange={(e) => setArmor(e.target.value)}/>
-        </InputWithLabel>
-        <InputWithLabel>
+        </InputLabel>
+        <InputLabel>
           toHit:
           <NumberInput name="toHit" onChange={(e) => setToHit(e.target.value)}/>
-        </InputWithLabel>
-        <InputWithLabel>
+        </InputLabel>
+        <InputLabel>
           Main attack damage die:
           <DiceInput name="damage" onChange={setDamage}/>
-        </InputWithLabel>
-        <InputWithLabel>
+        </InputLabel>
+        <InputLabel>
           Once-per-turn bonus damage:
           <DiceInput name="bonus_damage" onChange={setBonusDamage}/>
-        </InputWithLabel>
+        </InputLabel>
         <Button type='submit' onClick={() => {}}>
           Add character
         </Button>
