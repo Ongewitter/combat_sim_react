@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 
-function NumberInput(props) {
+function NumberInput({name, onChange}) {
   return (
-    <S.Input type="number" name={props.name} onChange={props.onChange} />
+    <S.Input type="number" name={name} onChange={onChange} />
   );
 }
 

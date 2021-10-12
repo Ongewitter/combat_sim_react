@@ -11,10 +11,10 @@ S.Button = styled.button`
   border-radius: 3px;
 `;
 
-function Button(props) {
+function Button({onClick, children}) {
   return(
-    <S.Button onClick={() => props.onClick()}>
-      {props.children}
+    <S.Button onClick={() => onClick()}>
+      {children}
     </S.Button>
   )
 }

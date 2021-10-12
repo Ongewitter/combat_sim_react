@@ -1,10 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
 
-function RightPanel(props) {
+function RightPanel({children}) {
   return (
     <S.RightPanelDiv>
-      {props.children}
+      {children}
     </S.RightPanelDiv>
   );
 }

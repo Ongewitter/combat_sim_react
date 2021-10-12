@@ -1,15 +1,15 @@
 import React from "react";
 import styled from 'styled-components';
 
-function InputWithLabel(props) {
+function InputLabel({children}) {
   return (
     <S.Label>
-      {props.children}
+      {children}
     </S.Label>
   );
 }
 
-export default InputWithLabel;
+export default InputLabel;
 
 const S = {};
 S.Label = styled.label`

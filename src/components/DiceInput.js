@@ -1,13 +1,13 @@
 import React from "react";
 import styled from 'styled-components';
 
-function DiceInput(props) {
+function DiceInput({onChange, ...props}) {
   const [amount, setAmount] = React.useState(0);
   const [die, setDie] = React.useState(0);
 
   function amountChanged(value) {
     setAmount(value)
-    props.onChange({
+    onChange({
       amount: amount,
       die: die
     });
@@ -15,7 +15,7 @@ function DiceInput(props) {
 
   function dieChanged(value) {
     setDie(value)
-    props.onChange({
+    onChange({
       amount: amount,
       die: die
     });
