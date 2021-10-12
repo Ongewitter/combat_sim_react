@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 
-function List(props) {
+function List() {
   return (
     <S.ul>
       <S.header>
