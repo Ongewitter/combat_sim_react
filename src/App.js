@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import CharacterCreate from './character/Create';
 import Button from './components/Button';
 import RightPanel from "./components/RightPanel";
-import CharacterList from './components/character/CharacterList.js';
+import CharacterTable from './components/character/CharacterTable';
 
 function App() {
   // const [data, setData] = React.useState(null);
   const [creating, setCreating] = React.useState(false);
-  const [characterList, setCharacterList] = React.useState([]);
+  const [characters, setCharacters] = React.useState([]);
 
   // React.useEffect(() => {
   //   fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`)
@@ -22,8 +22,9 @@ function App() {
   };
 
   function onSubmit(character){
-    console.log(character);
-    setCharacterList(characterList.push(character));
+    characters.push(character)
+    setCharacters(characters);
+    setCreating(!creating);
   };
 
   return (
@@ -40,10 +41,7 @@ function App() {
         </RightPanel>
         : ''
       }
-      <CharacterList
-        charactersList={characterList}
-      >
-      </CharacterList>
+      {(characters.length > 0) ? <CharacterTable characters={characters} /> : ''}
     </AppWrapper>
   );
 }
