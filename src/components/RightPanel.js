@@ -22,4 +22,5 @@ S.RightPanelDiv = styled.div`
   right: 0;
   height: 100%;
   width: 33%;
+  z-index: 2;
 `;
