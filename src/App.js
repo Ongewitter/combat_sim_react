@@ -22,7 +22,7 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    if (combatResults) {
+    if (combatResults.length > 0) {
       setShowCharacterTable(false);
       setShowCombatResultsTable(true);
     }
@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     setShowCharacterTable(characters.length > 0 && !showCombatResultsTable);
-  }, [characters, showCombatResultsTable]);
+  }, [characters.length, showCombatResultsTable]);
   
   function handleCreateCharacter() {
     setCreating(!creating);
