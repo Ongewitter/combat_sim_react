@@ -49,6 +49,24 @@ function Create({ onSubmit }) {
       });
   }
 
+  function setRandomValues(){
+    setRuleset(getRandomFromArray(['DnD']));
+    setName(getRandomFromArray(['Jeff', 'Bob', 'Fred', 'Ann', 'Rose', 'Gina', 'Dark Lord Zu\'ul', 'Orc', 'Gobbo']));
+    setHp(getRandom(100));
+    setArmor(getRandom(30));
+    setToHit(getRandom(15));
+    setDamage({amount: getRandom(10), die: getRandom(10)});
+    setBonusDamage({amount: getRandom(10), die: getRandom(10)});
+    setTeam(getRandomFromArray(['Wunder', 'Zunder']));
+  }
+
+  function getRandom(max){
+    return Math.floor(Math.random() * max);
+  }
+  function getRandomFromArray(array){
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
   return (
     <CreateWrapper>
       <CreateHeader>
@@ -78,33 +96,36 @@ function Create({ onSubmit }) {
         </RadioButtonList>
         <InputLabel>
           Name:
-          <TextInput name="name" onChange={(e) => setName(e.target.value)}/>
+          <TextInput name="name" value={name} onChange={(e) => setName(e.target.value)}/>
         </InputLabel>
         <InputLabel>
           HP:
-          <NumberInput name="hp" onChange={(e) => setHp(e.target.value)}/>
+          <NumberInput name="hp" value={hp} onChange={(e) => setHp(e.target.value)}/>
         </InputLabel>
         {/* TODO Should toggle depending on ruleset */}
         <InputLabel>
           Armor:
-          <NumberInput name="armor" onChange={(e) => setArmor(e.target.value)}/>
+          <NumberInput name="armor" value={armor} onChange={(e) => setArmor(e.target.value)}/>
         </InputLabel>
         <InputLabel>
           toHit:
-          <NumberInput name="toHit" onChange={(e) => setToHit(e.target.value)}/>
+          <NumberInput name="toHit" value={toHit} onChange={(e) => setToHit(e.target.value)}/>
         </InputLabel>
         <InputLabel>
           Main attack damage die:
-          <DiceInput name="damage" onChange={setDamage}/>
+          <DiceInput name="damage" value={damage} onChange={setDamage}/>
         </InputLabel>
         <InputLabel>
           Once-per-turn bonus damage:
-          <DiceInput name="bonus_damage" onChange={setBonusDamage}/>
+          <DiceInput name="bonus_damage" value={bonusDamage} onChange={setBonusDamage}/>
         </InputLabel>
         <InputLabel>
           Team name:
-          <TextInput name="team" onChange={(e) => setTeam(e.target.value)}/>
+          <TextInput name="team" value={team} onChange={(e) => setTeam(e.target.value)}/>
         </InputLabel>
+        <Button type='button' onClick={() => setRandomValues()}>
+          Random values
+        </Button>
         <Button type='submit' onClick={() => {}}>
           Add character
         </Button>
