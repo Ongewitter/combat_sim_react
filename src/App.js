@@ -1,30 +1,66 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styled from 'styled-components';
 
 import CharacterCreate from './character/Create';
 import Button from './components/Button';
 import RightPanel from "./components/RightPanel";
 import CharacterTable from './components/character/CharacterTable';
+import CombatResultsTable from './components/combat_results/CombatResultsTable';
 
 function App() {
-  // const [data, setData] = React.useState(null);
-  const [creating, setCreating] = React.useState(false);
-  const [characters, setCharacters] = React.useState([]);
+  // const [data, setData] = useState(null);
+  const [creating, setCreating] = useState(false);
+  const [characters, setCharacters] = useState([]);
+  const [combatResults, setCombatResults] = useState([]);
+  const [showCharacterTable, setShowCharacterTable] = useState(false);
+  const [showCombatResultsTable, setShowCombatResultsTable] = useState(false);
 
-  // React.useEffect(() => {
+  // useEffect(() => {
   //   fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`)
   //     .then((res) => res.json())
   //     .then((data) => setData(data.fun));
   // }, []);
+
+  useEffect(() => {
+    if (combatResults) {
+      setShowCharacterTable(false);
+      setShowCombatResultsTable(true);
+    }
+  }, [combatResults]);
+
+  useEffect(() => {
+    setShowCharacterTable(characters.length > 0 && !showCombatResultsTable);
+  }, [characters, showCombatResultsTable]);
   
   function handleCreateCharacter() {
     setCreating(!creating);
   };
 
+  function handleCombat(){
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/characters/combat`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(characters => {
+        setCombatResults(characters)
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   function onSubmit(character){
     characters.push(character)
     setCharacters(characters);
     setCreating(!creating);
+  };
+
+  function onDelete(character){
+    characters.splice(characters.indexOf(character), 1)
+    setCharacters(characters);
   };
 
   return (
@@ -41,7 +77,11 @@ function App() {
         </RightPanel>
         : ''
       }
-      {(characters.length > 0) ? <CharacterTable characters={characters} /> : ''}
+      <Button onClick={() => handleCombat()}>
+        Test your might!
+      </Button>
+      { (showCharacterTable) ? <CharacterTable characters={characters} onDelete={onDelete}/> : '' }
+      { (showCombatResultsTable) ? <CombatResultsTable combatResults={combatResults}/> : '' }
     </AppWrapper>
   );
 }
