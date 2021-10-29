@@ -48,7 +48,7 @@ function CharacterTable({characters, onDelete}) {
           <S.ButtonWrapper>
             <Button onClick={onMove}>Move</Button>
             <Button onClick={onEdit}>Edit</Button>
-            <Button onClick={handleDelete(character.id)}>Delete</Button>
+            <Button onClick={() => handleDelete(character.id)}>Delete</Button>
           </S.ButtonWrapper>
         </td>
       </TableRow>) 
