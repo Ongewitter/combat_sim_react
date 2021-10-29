@@ -15,19 +15,15 @@ function CharacterTable({characters, onDelete}) {
   }
   function handleDelete(id){
     // TODO: Move to a service (and Redux later)
-    const character = {
-      id: id
-    };
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/characters`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/characters/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(character),
     })
       .then(response => response.json())
-      .then(character => {
-        onDelete(character);
+      .then(characters => {
+        onDelete(characters);
       })
       .catch((error) => {
         console.error('Error:', error);

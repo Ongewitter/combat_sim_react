@@ -15,11 +15,25 @@ function App() {
   const [showCharacterTable, setShowCharacterTable] = useState(false);
   const [showCombatResultsTable, setShowCombatResultsTable] = useState(false);
 
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`)
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.fun));
-  // }, []);
+  useEffect(() => {
+    getCharacters();
+  }, []);
+  
+  function getCharacters(){
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/characters`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(characters => {
+        setCharacters(characters);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
   useEffect(() => {
     if (combatResults.length > 0) {
@@ -58,8 +72,7 @@ function App() {
     setCreating(!creating);
   };
 
-  function onDelete(character){
-    characters.splice(characters.indexOf(character), 1)
+  function onDelete(characters){
     setCharacters(characters);
   };
 
