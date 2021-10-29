@@ -1,18 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
 
-function CharacterTable() {
+function CharacterTable({ children }) {
   return (
     <S.thead>
-      <tr>
-        <td>Name</td>
-        <td>HP</td>
-        <td>Armor</td>
-        <td>toHit</td>
-        <td>Damage</td>
-        <td>Bonus Damage</td>
-        <td></td>
-      </tr>
+      {children}
     </S.thead>
   );
 }
