@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styled from 'styled-components';
 
 import Button from '../components/Button';
@@ -10,13 +10,14 @@ import RadioButtonInput from "../components/RadioButtonInput";
 import RadioButtonList from "../components/RadioButtonList";
 
 function Create({ onSubmit }) {
-  const [ruleset, setRuleset] = React.useState('DnD');
-  const [name, setName] = React.useState('');
-  const [hp, setHp] = React.useState(1);
-  const [armor, setArmor] = React.useState(10);
-  const [toHit, setToHit] = React.useState(0);
-  const [damage, setDamage] = React.useState({damage: 0, die: 0});
-  const [bonusDamage, setBonusDamage] = React.useState({damage: 0, die: 0});
+  const [ruleset, setRuleset] = useState('DnD');
+  const [name, setName] = useState('');
+  const [hp, setHp] = useState(1);
+  const [armor, setArmor] = useState(10);
+  const [toHit, setToHit] = useState(0);
+  const [damage, setDamage] = useState({damage: 0, die: 0});
+  const [bonusDamage, setBonusDamage] = useState({damage: 0, die: 0});
+  const [team, setTeam] = useState('');
 
 
   function handleSubmit(event) {
@@ -29,6 +30,7 @@ function Create({ onSubmit }) {
       toHit: toHit,
       damage: damage,
       bonusDamage: bonusDamage,
+      team: team,
       ruleset: ruleset,
     }
     fetch(`${process.env.REACT_APP_BACKEND_URL}/characters`, {
@@ -98,6 +100,10 @@ function Create({ onSubmit }) {
         <InputLabel>
           Once-per-turn bonus damage:
           <DiceInput name="bonus_damage" onChange={setBonusDamage}/>
+        </InputLabel>
+        <InputLabel>
+          Team name:
+          <TextInput name="team" onChange={(e) => setTeam(e.target.value)}/>
         </InputLabel>
         <Button type='submit' onClick={() => {}}>
           Add character
