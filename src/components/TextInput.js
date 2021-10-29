@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 
-function TextInput({name, onChange}) {
+function TextInput({name, value, onChange}) {
   return (
-    <S.Input type="text" name={name} onChange={onChange} />
+    <S.Input type="text" name={name} value={value} onChange={onChange} />
   );
 }
 
