@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+function Button({onClick, children}) {
+  return(
+    <S.Button onClick={() => onClick()}>
+      {children}
+    </S.Button>
+  )
+}
+
 const S = {};
 S.Button = styled.button`
   text-align: center;
@@ -10,13 +18,5 @@ S.Button = styled.button`
   border: 2px solid palevioletred;
   border-radius: 3px;
 `;
-
-function Button({onClick, children}) {
-  return(
-    <S.Button onClick={() => onClick()}>
-      {children}
-    </S.Button>
-  )
-}
 
 export default Button;
