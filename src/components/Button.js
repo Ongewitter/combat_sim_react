@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-function Button({onClick, children}) {
+function Button({onClick, type, children}) {
   return(
-    <S.Button onClick={() => onClick()}>
+    <S.Button type={type} onClick={() => onClick()}>
       {children}
     </S.Button>
   )
