@@ -51,7 +51,7 @@ function App() {
   };
 
   function handleCombat(){
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/characters/combat`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/combat`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
