@@ -58,8 +58,8 @@ function App() {
       },
     })
       .then(response => response.json())
-      .then(characters => {
-        setCombatResults(characters)
+      .then(combatResults => {
+        setCombatResults(combatResults)
       })
       .catch((error) => {
         console.error('Error:', error);

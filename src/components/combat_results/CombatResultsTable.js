@@ -9,11 +9,12 @@ function CombatResultsTable({combatResults}) {
   function renderResults(){
     return combatResults.map(result => {
       return (<TableRow key={result.id}>
-        <td>{result.status}</td>
         <td>{result.name}</td>
         <td>{result.hp}</td>
-        <td>{result.damage_dealt}</td>
-        <td>{result.damage_taken}</td>
+        <td>{result.damageDealt}</td>
+        <td>{result.attacks}</td>
+        <td>{result.hits}</td>
+        <td>{result.status}</td>
       </TableRow>) 
     });
   }
@@ -22,11 +23,12 @@ function CombatResultsTable({combatResults}) {
     <S.table>
       <TableHeader>
         <tr>
-          <td>Status</td>
           <td>Name</td>
           <td>HP</td>
-          <td>Damage taken</td>
           <td>Damage dealt</td>
+          <td>Attacks</td>
+          <td>Hits</td>
+          <td>Status</td>
         </tr>
       </TableHeader>
       <TableBody>
